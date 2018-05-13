@@ -83,45 +83,48 @@ body {
 } 
 
 /*Page-level styles*/
-.evnts{
+.evnts {
     list-style: none;
 }
 
-.evnts > li{
-    position : relative;
-    margin-bottom: 30px;
-}
-
-.evnts > li.date{
-    background :#ff4342;
-    color:white;
-    text-align: center;
-    width: 60px;
-}
-
-.evnts > li.date.month{
-    text-transform: uppercase;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 2px 6px;
-}
-
-.evnts > li.date.day{
-    background: #f7f7f7;
-}
-
-.evnts > li.details{
-    position: absolute;
-    top: 0;
-    left: 70px; 
-}
-
-.evnts > li.details.organizer{
-    font-weight: bold;
-    display:block;
-}
- 
- .evnts > li.details.category{
-font-size : 15px;
+    .evnts > li {
+        position: relative;
+        margin-bottom: 30px;
     }
 
+        .evnts > li .date {
+            background: #ff4342;
+            color: white;
+            text-align: center;
+            width: 60px;
+            border-radius: 8px;
+        }
+
+            .evnts > li .date .month {
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: bold;
+                padding: 2px 6px;
+            }
+
+            .evnts > li .date .day {
+                background: #f7f7f7;
+                color: #333;
+                font-size: 20px;
+                padding: 6px 12px;
+            }
+
+        .evnts > li .details {
+            position: absolute;
+            top: 0;
+            left: 70px;
+        }
+
+            .evnts > li .details .organizer {
+                font-weight: bold;
+                display: block;
+            }
+
+            .evnts > li .details .category {
+                font-size: 15px;
+            }

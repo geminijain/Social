@@ -3,7 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 <h1>@Model.Heading</h1>
-<ul class="events voffset4">
+<ul class="evnts voffset4">
     @foreach (var evnt in Model.UpcomingEvents)
     {
         <li>
@@ -20,17 +20,17 @@
                     @evnt.Organizer.Name
 
                     @if (Model.ShowActions)
-                    {
-                        <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@evnt.OrganizerId">Follow</button>
-                    }
+        {
+            <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@evnt.OrganizerId">Follow</button>
+}
                 </span>
                 <span class="category">
                     @evnt.Category.Name
                 </span>
                 @if (Model.ShowActions)
-                {
-                    <button data-event-id="@evnt.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
-                }
+    {
+            <button data-event-id="@evnt.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going?</button>
+}
             </div>
         </li>
     }

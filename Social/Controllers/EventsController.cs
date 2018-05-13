@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Social.Models;
 using Social.ViewModels;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -16,6 +17,29 @@ namespace Social.Controllers
         }
 
         [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var events = _context.Attendances
+                .Where( a => a.AttendeeId == userId)
+                .Select(a => a.Event)
+                   .Include(e => e.Organizer)
+                .Include(e => e.Category)
+                .ToList();
+
+            var viewModel = new EventsViewModel()
+            {
+                UpcomingEvents = events,
+                ShowActions = User.Identity.IsAuthenticated,
+                Heading = "Events I'm Attending"
+            };
+
+            return View("Events", viewModel);
+
+        }
+
+
+        [Authorize]
         public ActionResult Create()
         {
             var viewModel = new EventFormViewModel
@@ -27,6 +51,7 @@ namespace Social.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(EventFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
